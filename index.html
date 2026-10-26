@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>나의 포트폴리오</title>
+    <style>
+        /* 기본 설정 */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 40px 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+        /* 헤더 */
+        header {
+            text-align: center;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #eee;
+        }
+        header h1 {
+            font-size: 2.2rem;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+        }
+        header p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+        /* 섹션 공통 */
+        section {
+            padding: 30px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        section:last-child { border-bottom: none; }
+        section h2 {
+            font-size: 1.4rem;
+            color: #1a1a1a;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        section h2::before {
+            content: '';
+            display: inline-block;
+            width: 4px;
+            height: 24px;
+            background: #4f46e5;
+            border-radius: 2px;
+        }
+        /* 리스트 스타일 */
+        ul { list-style: none; padding-left: 0; }
+        ul li {
+            padding: 8px 0;
+            padding-left: 20px;
+            position: relative;
+            color: #444;
+        }
+        ul li::before {
+            content: '•';
+            color: #4f46e5;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        /* 경험 카드 */
+        .experience-item {
+            background: #f8f9fa;
+            padding: 16px 20px;
+            border-radius: 10px;
+            margin-bottom: 12px;
+        }
+        .experience-item h3 {
+            font-size: 1.05rem;
+            color: #1a1a1a;
+            margin-bottom: 4px;
+        }
+        .experience-item p {
+            font-size: 0.95rem;
+            color: #666;
+        }
+        /* 연락처 */
+        .contact-links {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+        .contact-links a {
+            text-decoration: none;
+            color: #fff;
+            background: #4f46e5;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            transition: background 0.2s;
+        }
+        .contact-links a:hover {
+            background: #3730a3;
+        }
+        /* 모바일 대응 */
+        @media (max-width: 600px) {
+            .container { padding: 24px 18px; }
+            header h1 { font-size: 1.7rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- 헤더: 이름과 한 줄 소개 -->
+        <header>
+            <h1>여기에 이름을 입력하세요</h1>
+            <p>여기에 한 줄 소개를 입력하세요 (예: 배움을 즐기는 개발자 지망생)</p>
+        </header>
+
+        <!-- 나는 어떤 사람인가 -->
+        <section>
+            <h2>나는 어떤 사람인가요?</h2>
+            <p>여기에 자기소개를 작성하세요. 예를 들어, 어떤 성격인지, 무엇을 중요하게 생각하는지, 어떤 목표를 가지고 있는지 적으면 좋습니다.</p>
+        </section>
+
+        <!-- 좋아하는 것 -->
+        <section>
+            <h2>내가 좋아하는 것</h2>
+            <ul>
+                <li>좋아하는 활동 1 (예: 새로운 기술 배우기)</li>
+                <li>좋아하는 활동 2 (예: 독서와 글쓰기)</li>
+                <li>좋아하는 활동 3 (예: 여행과 사진 찍기)</li>
+            </ul>
+        </section>
+
+        <!-- 경험 -->
+        <section>
+            <h2>나의 경험</h2>
+            <div class="experience-item">
+                <h3>경험 제목 1 (예: 파이썬 기초 과정 수료)</h3>
+                <p>간단한 설명을 입력하세요. 언제, 무엇을 했고, 무엇을 배웠는지 적으면 좋습니다.</p>
+            </div>
+            <div class="experience-item">
+                <h3>경험 제목 2 (예: 팀 프로젝트 참여)</h3>
+                <p>간단한 설명을 입력하세요. 어떤 역할을 맡았고, 어떤 결과를 냈는지 적으면 좋습니다.</p>
+            </div>
+        </section>
+
+        <!-- 연락처 -->
+        <section>
+            <h2>연락하기</h2>
+            <p>아래 링크를 눌러 저에게 연락하실 수 있습니다.</p>
+            <div class="contact-links">
+                <a href="mailto:your-email@example.com">이메일 보내기</a>
+                <a href="https://github.com/내깃허브아이디" target="_blank">깃허브 방문</a>
+            </div>
+        </section>
+
+    </div>
+</body>
+</html>
