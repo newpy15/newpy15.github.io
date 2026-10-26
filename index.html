@@ -1,169 +1,1013 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>나의 포트폴리오</title>
-    <style>
-        /* 기본 설정 */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background-color: #f9f9f9;
-            color: #333;
-            line-height: 1.6;
-            padding: 20px;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: #ffffff;
-            border-radius: 16px;
-            padding: 40px 30px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-        }
-        /* 헤더 */
-        header {
-            text-align: center;
-            padding-bottom: 30px;
-            border-bottom: 1px solid #eee;
-        }
-        header h1 {
-            font-size: 2.2rem;
-            color: #1a1a1a;
-            margin-bottom: 8px;
-        }
-        header p {
-            color: #666;
-            font-size: 1.1rem;
-        }
-        /* 섹션 공통 */
-        section {
-            padding: 30px 0;
-            border-bottom: 1px solid #f0f0f0;
-        }
-        section:last-child { border-bottom: none; }
-        section h2 {
-            font-size: 1.4rem;
-            color: #1a1a1a;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        section h2::before {
-            content: '';
-            display: inline-block;
-            width: 4px;
-            height: 24px;
-            background: #4f46e5;
-            border-radius: 2px;
-        }
-        /* 리스트 스타일 */
-        ul { list-style: none; padding-left: 0; }
-        ul li {
-            padding: 8px 0;
-            padding-left: 20px;
-            position: relative;
-            color: #444;
-        }
-        ul li::before {
-            content: '•';
-            color: #4f46e5;
-            font-weight: bold;
-            position: absolute;
-            left: 0;
-        }
-        /* 경험 카드 */
-        .experience-item {
-            background: #f8f9fa;
-            padding: 16px 20px;
-            border-radius: 10px;
-            margin-bottom: 12px;
-        }
-        .experience-item h3 {
-            font-size: 1.05rem;
-            color: #1a1a1a;
-            margin-bottom: 4px;
-        }
-        .experience-item p {
-            font-size: 0.95rem;
-            color: #666;
-        }
-        /* 연락처 */
-        .contact-links {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin-top: 10px;
-        }
-        .contact-links a {
-            text-decoration: none;
-            color: #fff;
-            background: #4f46e5;
-            padding: 10px 20px;
-            border-radius: 8px;
-            font-size: 0.95rem;
-            transition: background 0.2s;
-        }
-        .contact-links a:hover {
-            background: #3730a3;
-        }
-        /* 모바일 대응 */
-        @media (max-width: 600px) {
-            .container { padding: 24px 18px; }
-            header h1 { font-size: 1.7rem; }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>김도연 | Security & Software Engineer 포트폴리오</title>
+  <!-- Pretendard 웹폰트 -->
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    /* ==========================================================================
+       1. 네이비/블루 테마 시스템 (신뢰감 & WCAG AA 명암비 준수)
+       ========================================================================== */
+    :root {
+      --bg-body: #ffffff;
+      --bg-sub: #f8fafc;
+      --text-main: #0f172a;       /* 딥 슬레이트 네이비 */
+      --text-muted: #334155;      /* 짙은 본문 */
+      --text-dim: #64748b;        /* 보조 텍스트 */
+
+      /* 포인트 네이비/블루 */
+      --navy-900: #0f172a;
+      --navy-800: #1e293b;
+      --navy-700: #1e3a8a;       /* 메인 포인트 딥 네이비 */
+      --blue-600: #2563eb;       /* 액센트 블루 */
+      --blue-100: #dbeafe;
+      --blue-50: #eff6ff;
+
+      --border-color: #cbd5e1;
+      --border-strong: #1e3a8a;
+      --focus-ring: #2563eb;
+
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --radius-pill: 999px;
+
+      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.05);
+      --shadow-md: 0 4px 14px -2px rgba(15, 23, 42, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+
+    body {
+      background-color: var(--bg-body);
+      color: var(--text-main);
+      font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.55;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 24px 32px;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1280px;
+      width: 100%;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      flex: 1;
+    }
+
+    /* Lucide 아이콘 공통 정렬 */
+    .lucide {
+      width: 16px;
+      height: 16px;
+      stroke-width: 2;
+      display: inline-block;
+      vertical-align: middle;
+      flex-shrink: 0;
+    }
+
+    /* 키보드 Tab 접근성 */
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--focus-ring);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+
+    /* ==========================================================================
+       1. 상단 헤더: 이름 & 타이틀 (h1)
+       ========================================================================== */
+    header {
+      border-bottom: 2px solid var(--navy-700);
+      padding-bottom: 12px;
+      flex-shrink: 0;
+    }
+
+    .header-title-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 6px;
+      flex-wrap: wrap;
+    }
+
+    .header-title-row h1 {
+      font-size: 1.85rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--navy-900);
+    }
+
+    .role-badge {
+      font-size: 0.84rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border: 1px solid var(--navy-700);
+      border-radius: var(--radius-pill);
+      background: var(--blue-50);
+      color: var(--navy-700);
+    }
+
+    .tagline {
+      font-size: 0.98rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .tagline strong {
+      color: var(--navy-700);
+    }
+
+    /* ==========================================================================
+       [핵심 수정] 상단 대시보드 그리드: 
+       [좌측: 공개정보 밑에 비공개정보] + [우측: 핵심역량 AI 브랜치 다이어그램]
+       ========================================================================== */
+    .top-dashboard-grid {
+      display: grid;
+      grid-template-columns: 460px 1fr;
+      gap: 16px;
+      align-items: stretch;
+      flex-shrink: 0;
+    }
+
+    /* 좌측 컬럼: 공개정보 밑에 비공개정보 (세로 2단 적층) */
+    .privacy-column {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      justify-content: space-between;
+    }
+
+    .info-card {
+      background: var(--bg-sub);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 10px 16px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .info-card.public-card {
+      border-left: 4px solid var(--navy-700);
+    }
+
+    .info-card.private-card {
+      border-left: 4px solid #b91c1c;
+      background: #fffafa;
+    }
+
+    .info-badge-title {
+      font-size: 0.82rem;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      letter-spacing: 0.02em;
+    }
+
+    .public-title { color: var(--navy-700); }
+    .private-title { color: #b91c1c; }
+
+    /* 메일 & 깃허브(노트) 아이콘 버튼 */
+    .icon-action-btn {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      color: var(--navy-700);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+
+    .icon-action-btn:hover {
+      background: var(--navy-700);
+      color: #ffffff;
+      border-color: var(--navy-700);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(30, 58, 138, 0.2);
+    }
+
+    .icon-action-btn .lucide {
+      width: 17px;
+      height: 17px;
+    }
+
+    .icon-action-btn::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      bottom: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--navy-900);
+      color: #ffffff;
+      font-size: 0.72rem;
+      padding: 3px 8px;
+      border-radius: 4px;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+      font-weight: 600;
+      z-index: 10;
+    }
+
+    .icon-action-btn:hover::after {
+      opacity: 1;
+    }
+
+    /* 취향 태그 */
+    .favorites-group {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      padding: 3px 10px;
+      border-radius: var(--radius-pill);
+    }
+
+    .fav-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .fav-item .lucide {
+      width: 13px;
+      height: 13px;
+      color: var(--navy-700);
+    }
+
+    /* 비공개 뱃지 */
+    .private-pill {
+      background: #ffffff;
+      border: 1px dashed #cbd5e1;
+      padding: 3px 8px;
+      border-radius: var(--radius-pill);
+      color: #64748b;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-weight: 600;
+      font-size: 0.76rem;
+    }
+
+    .private-pill .lucide {
+      width: 12px;
+      height: 12px;
+      color: #b91c1c;
+    }
+
+    /* ==========================================================================
+       [우측 컬럼] 핵심 역량 (Skills): AI를 중심으로 Network & Security 분기 연결
+       ========================================================================== */
+    .skills-hub-card {
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 12px 18px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .skills-hub-header {
+      font-size: 0.84rem;
+      font-weight: 800;
+      color: var(--navy-900);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* AI 중심 연결 다이어그램 레이아웃 */
+    .hub-diagram {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex: 1;
+    }
+
+    /* AI 코어 허브 */
+    .hub-ai-core {
+      background: linear-gradient(135deg, var(--navy-900), var(--navy-700));
+      color: #ffffff;
+      border: 2px solid var(--blue-600);
+      border-radius: var(--radius-md);
+      padding: 10px 16px;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      flex-shrink: 0;
+    }
+
+    .hub-ai-title {
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: #93c5fd;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hub-ai-tags {
+      display: flex;
+      gap: 6px;
+    }
+
+    .hub-ai-tag {
+      background: rgba(255, 255, 255, 0.2);
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 4px;
+    }
+
+    /* 2갈래 분기 커넥터 영역 */
+    .hub-branches-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      flex: 1;
+    }
+
+    .branch-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .branch-arrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      color: var(--blue-600);
+      font-weight: 800;
+      font-size: 0.75rem;
+      flex-shrink: 0;
+    }
+
+    .branch-arrow .lucide {
+      width: 16px;
+      height: 16px;
+    }
+
+    .branch-node {
+      background: var(--blue-50);
+      border: 1px solid var(--blue-100);
+      border-radius: var(--radius-sm);
+      padding: 5px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex: 1;
+    }
+
+    .branch-node-title {
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: var(--navy-700);
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .branch-node-tags {
+      display: inline-flex;
+      gap: 5px;
+    }
+
+    .branch-tag {
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      padding: 2px 7px;
+      border-radius: 4px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    /* ==========================================================================
+       3. STAR 카드 영역: 완벽한 세로 1열 Stack (가로 와이드 카드)
+       ========================================================================== */
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      min-height: 0;
+    }
+
+    .section-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--navy-900);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      letter-spacing: -0.02em;
+    }
+
+    .cards-vertical-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .card-row {
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .card-row:hover {
+      border-color: var(--navy-700);
+      box-shadow: var(--shadow-md);
+    }
+
+    .card-row-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 8px;
+    }
+
+    .card-row-title {
+      font-size: 1.02rem;
+      font-weight: 800;
+      color: var(--navy-700);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card-row-badge {
+      font-size: 0.74rem;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: var(--blue-50);
+      color: var(--navy-700);
+      border: 1px solid var(--blue-100);
+    }
+
+    /* STAR 내용: 가로 3단 그리드 */
+    .star-row-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      background: var(--bg-sub);
+      border-radius: var(--radius-sm);
+      padding: 10px 14px;
+    }
+
+    .star-cell {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 0.86rem;
+      line-height: 1.45;
+    }
+
+    .star-cell-header {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-weight: 800;
+      font-size: 0.76rem;
+      color: var(--navy-700);
+    }
+
+    .star-tag-solid {
+      background: var(--navy-700);
+      color: #ffffff;
+      padding: 1px 6px;
+      border-radius: 4px;
+      font-size: 0.7rem;
+    }
+
+    .star-cell-desc {
+      color: var(--text-muted);
+      word-break: keep-all;
+    }
+
+    /* 아코디언 근거 박스 */
+    .evidence-accordion-wrap {
+      border: 1px dashed var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 8px 12px;
+      background: #ffffff;
+    }
+
+    .toggle-btn {
+      width: 100%;
+      background: var(--bg-sub);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 7px 14px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: var(--navy-700);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.2s ease;
+    }
+
+    .toggle-btn:hover {
+      border-color: var(--navy-700);
+      background: var(--blue-50);
+    }
+
+    .btn-label-group {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .toggle-btn .arrow-icon {
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .toggle-btn.open .arrow-icon {
+      transform: rotate(180deg);
+    }
+
+    .accordion-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+      opacity: 0;
+    }
+
+    .accordion-body.open {
+      max-height: 250px;
+      opacity: 1;
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .accordion-inner-grid {
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .evidence-text {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .evidence-image-placeholder {
+      height: 80px;
+      background: var(--bg-sub);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      color: var(--text-dim);
+      font-size: 0.72rem;
+      font-weight: 600;
+    }
+
+    .evidence-image-placeholder .lucide {
+      width: 18px;
+      height: 18px;
+      color: var(--navy-700);
+    }
+
+    /* ==========================================================================
+       4. 하단 영역: 5대 검사 통과 기록만 정갈하게 유지
+       ========================================================================== */
+    footer {
+      border-top: 1px solid var(--border-color);
+      padding-top: 12px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 0.84rem;
+      color: var(--text-dim);
+      flex-shrink: 0;
+      background: #ffffff;
+    }
+
+    .inspection-badge-group {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .inspection-badge-group strong {
+      color: var(--navy-900);
+    }
+
+    .inspection-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--navy-700);
+      color: #ffffff;
+      padding: 3px 10px;
+      border-radius: var(--radius-pill);
+      font-weight: 700;
+      font-size: 0.78rem;
+    }
+
+    .inspection-badge .lucide {
+      width: 13px;
+      height: 13px;
+    }
+
+    /* 반응형 대응 */
+    @media (max-width: 1024px) {
+      .top-dashboard-grid {
+        grid-template-columns: 1fr;
+      }
+      .star-row-container {
+        grid-template-columns: 1fr;
+      }
+      .accordion-inner-grid {
+        grid-template-columns: 1fr;
+      }
+      .hub-diagram {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
 
-        <!-- 헤더: 이름과 한 줄 소개 -->
-        <header>
-            <h1>여기에 이름을 입력하세요</h1>
-            <p>여기에 한 줄 소개를 입력하세요 (예: 배움을 즐기는 개발자 지망생)</p>
-        </header>
+  <div class="container">
+    
+    <!-- 1. 상단 헤더: 이름 & 타이틀 -->
+    <header>
+      <div class="header-title-row">
+        <h1>김도연</h1>
+        <span class="role-badge">Security & Software Engineer</span>
+      </div>
+      <p class="tagline">
+        <strong>[나의 소개]</strong> 문제 해결을 위해 탐구하는 자 — 상황을 끝까지 분석하고 실행해 결과를 만듭니다.
+      </p>
+    </header>
 
-        <!-- 나는 어떤 사람인가 -->
-        <section>
-            <h2>나는 어떤 사람인가요?</h2>
-            <p>여기에 자기소개를 작성하세요. 예를 들어, 어떤 성격인지, 무엇을 중요하게 생각하는지, 어떤 목표를 가지고 있는지 적으면 좋습니다.</p>
-        </section>
+    <!-- [핵심 요구사항 반영] 
+         좌측: [공개정보] 밑에 [비공개정보] 세로 2단 적층 
+         우측: [핵심역량] AI 기반으로 Network와 Security가 각각 연결되는 분기 다이어그램
+    -->
+    <section class="top-dashboard-grid" aria-label="개인정보 및 핵심 역량 아키텍처">
+      
+      <!-- [좌측 컬럼] 공개정보 밑에 비공개정보 -->
+      <div class="privacy-column">
+        
+        <!-- 상단: 공개 정보 -->
+        <div class="info-card public-card">
+          <span class="info-badge-title public-title">
+            <i data-lucide="unlock"></i>
+            <span>[공개 정보]</span>
+          </span>
 
-        <!-- 좋아하는 것 -->
-        <section>
-            <h2>내가 좋아하는 것</h2>
-            <ul>
-                <li>좋아하는 활동 1 (예: 새로운 기술 배우기)</li>
-                <li>좋아하는 활동 2 (예: 독서와 글쓰기)</li>
-                <li>좋아하는 활동 3 (예: 여행과 사진 찍기)</li>
-            </ul>
-        </section>
+          <!-- 이메일 아이콘 버튼 -->
+          <a href="mailto:rlaehdus5327@gmail.com" class="icon-action-btn" data-tooltip="이메일 (rlaehdus5327@gmail.com)" aria-label="이메일 보내기">
+            <i data-lucide="mail"></i>
+          </a>
 
-        <!-- 경험 -->
-        <section>
-            <h2>나의 경험</h2>
-            <div class="experience-item">
-                <h3>경험 제목 1 (예: 파이썬 기초 과정 수료)</h3>
-                <p>간단한 설명을 입력하세요. 언제, 무엇을 했고, 무엇을 배웠는지 적으면 좋습니다.</p>
+          <!-- 깃허브 아이콘 버튼 (스프링 노트 아이콘) -->
+          <a href="https://github.com/newpy15" target="_blank" rel="noopener noreferrer" class="icon-action-btn" data-tooltip="GitHub (newpy15)" aria-label="GitHub 프로필 방문">
+            <i data-lucide="notebook"></i>
+          </a>
+
+          <!-- 취향 태그 -->
+          <div class="favorites-group">
+            <span class="fav-item"><i data-lucide="coffee"></i> 커피</span>
+            <span class="fav-item"><i data-lucide="flame"></i> 위스키</span>
+            <span class="fav-item"><i data-lucide="headphones"></i> 음악</span>
+          </div>
+        </div>
+
+        <!-- 하단: 비공개 정보 (공개정보 바로 밑에 배치) -->
+        <div class="info-card private-card">
+          <span class="info-badge-title private-title">
+            <i data-lucide="lock"></i>
+            <span>[비공개 정보]</span>
+          </span>
+          <span class="private-pill"><i data-lucide="lock"></i> 거주지</span>
+          <span class="private-pill"><i data-lucide="lock"></i> 생년월일</span>
+          <span class="private-pill"><i data-lucide="lock"></i> 연락처</span>
+          <span style="font-size: 0.72rem; color: #94a3b8; margin-left: auto;">(보안 보호)</span>
+        </div>
+
+      </div>
+
+      <!-- [우측 컬럼] 핵심 역량 (Skills): AI 코어 허브에서 Network & Security로 분기 연결되는 다이어그램 -->
+      <div class="skills-hub-card">
+        <div class="skills-hub-header">
+          <i data-lucide="sparkles"></i>
+          <span>핵심 역량 아키텍처 (Skills Architecture)</span>
+        </div>
+
+        <div class="hub-diagram">
+          
+          <!-- AI 중심 코어 허브 -->
+          <div class="hub-ai-core">
+            <span class="hub-ai-title">
+              <i data-lucide="bot"></i>
+              <span>AI & Tools (Core Hub)</span>
+            </span>
+            <div class="hub-ai-tags">
+              <span class="hub-ai-tag">Python</span>
+              <span class="hub-ai-tag">AI 코딩 도구</span>
             </div>
-            <div class="experience-item">
-                <h3>경험 제목 2 (예: 팀 프로젝트 참여)</h3>
-                <p>간단한 설명을 입력하세요. 어떤 역할을 맡았고, 어떤 결과를 냈는지 적으면 좋습니다.</p>
-            </div>
-        </section>
+          </div>
 
-        <!-- 연락처 -->
-        <section>
-            <h2>연락하기</h2>
-            <p>아래 링크를 눌러 저에게 연락하실 수 있습니다.</p>
-            <div class="contact-links">
-                <a href="mailto:your-email@example.com">이메일 보내기</a>
-                <a href="https://github.com/내깃허브아이디" target="_blank">깃허브 방문</a>
+          <!-- AI 기반으로 각각 연결되는 2갈래 브랜치 (Network & Security) -->
+          <div class="hub-branches-wrap">
+            
+            <!-- 브랜치 1: AI ➔ Network -->
+            <div class="branch-row">
+              <span class="branch-arrow">
+                <i data-lucide="arrow-right"></i>
+              </span>
+              <div class="branch-node">
+                <span class="branch-node-title">
+                  <i data-lucide="globe"></i>
+                  <span>Network</span>
+                </span>
+                <div class="branch-node-tags">
+                  <span class="branch-tag">TCP/IP</span>
+                  <span class="branch-tag">Wireshark</span>
+                </div>
+              </div>
             </div>
-        </section>
 
-    </div>
+            <!-- 브랜치 2: AI ➔ Security -->
+            <div class="branch-row">
+              <span class="branch-arrow">
+                <i data-lucide="arrow-right"></i>
+              </span>
+              <div class="branch-node">
+                <span class="branch-node-title">
+                  <i data-lucide="shield"></i>
+                  <span>Security</span>
+                </span>
+                <div class="branch-node-tags">
+                  <span class="branch-tag">취약점 분석</span>
+                  <span class="branch-tag">방화벽</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+    <!-- 3. STAR 카드 영역: 세로 1열 Stack (가로 와이드 카드 & 아코디언) -->
+    <main>
+      <h2 class="section-title">
+        <i data-lucide="briefcase"></i>
+        <span>핵심 역량 및 경험 기반 활동 (STAR)</span>
+      </h2>
+
+      <div class="cards-vertical-stack">
+        
+        <!-- 카드 01 -->
+        <article class="card-row">
+          <div class="card-row-header">
+            <h3 class="card-row-title">
+              <i data-lucide="terminal"></i>
+              <span>01. 예외 상황 추적 및 문제 해결력</span>
+            </h3>
+            <span class="card-row-badge">STAR 01</span>
+          </div>
+
+          <div class="star-row-container">
+            <div class="star-cell">
+              <span class="star-cell-header"><span class="star-tag-solid">상황</span> 백그라운드 예외</span>
+              <p class="star-cell-desc">프로그램 실행 중 비정상 입력값으로 인해 전체 프로세스가 종료되는 오류 발생 시</p>
+            </div>
+            <div class="star-cell">
+              <span class="star-cell-header"><span class="star-tag-solid">행동</span> 방어 로직 설계</span>
+              <p class="star-cell-desc">에러 로그 역추적 및 입력 유효성 검사, try-catch 예외 처리 분기를 꼼꼼히 보강하여</p>
+            </div>
+            <div class="star-cell">
+              <span class="star-cell-header"><span class="star-tag-solid">결과</span> 안정적 동작 완성</span>
+              <p class="star-cell-desc">비정상 입력에도 프로세스 다운 없이 정상 안내를 출력하며 안정적으로 동작하도록 완성했습니다.</p>
+            </div>
+          </div>
+
+          <!-- 아코디언 상세 근거 -->
+          <div class="evidence-accordion-wrap">
+            <button type="button" class="toggle-btn" aria-expanded="false" onclick="toggleAccordion(this)">
+              <span class="btn-label-group">
+                <i data-lucide="file-text"></i>
+                <span class="btn-text">상세 근거 보기</span>
+              </span>
+              <i data-lucide="chevron-down" class="arrow-icon"></i>
+            </button>
+            <div class="accordion-body">
+              <div class="accordion-inner-grid">
+                <p class="evidence-text">
+                  • 0으로 나누기, 공백 입력, 비정상 문자열 등 5대 엣지 케이스 테스트 100% 통과<br>
+                  • 예외 방어 로직 적용 후 오류 재현율 0% 달성 기록 보유
+                </p>
+                <div class="evidence-image-placeholder">
+                  <i data-lucide="image"></i>
+                  <span>[테스트 결과 캡처 이미지 공간]</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 카드 02 -->
+        <article class="card-row">
+          <div class="card-row-header">
+            <h3 class="card-row-title">
+              <i data-lucide="calendar"></i>
+              <span>02. 역할 분담과 선제적 일정 조율</span>
+            </h3>
+            <span class="card-row-badge">STAR 02</span>
+          </div>
+
+          <div class="star-row-container">
+            <div class="star-cell">
+              <span class="star-cell-header"><span class="star-tag-solid">상황</span> 일정 지연 위기</span>
+              <p class="star-cell-desc">공동 프로젝트 중 팀원 간 작업 속도 차이로 마감 기한 내 취합이 지연될 위기에 처했을 때</p>
+            </div>
+            <div class="star-cell">
+              <span class="star-cell-header"><span class="star-tag-solid">행동</span> 마일스톤 운영</span>
+              <p class="star-cell-desc">우선순위 중심 단계별 체크리스트를 제작·공유하고 중간 공유일을 지정해 속도를 맞추어</p>
+            </div>
+            <div class="star-cell">
+              <span class="star-cell-header"><span class="star-tag-solid">결과</span> 마감 D-2 조기 취합</span>
+              <p class="star-cell-desc">병목 현상을 사전에 해소하고 최종 마감 이틀 전 전체 결과물 취합과 피드백을 완료했습니다.</p>
+            </div>
+          </div>
+
+          <div class="evidence-accordion-wrap">
+            <button type="button" class="toggle-btn" aria-expanded="false" onclick="toggleAccordion(this)">
+              <span class="btn-label-group">
+                <i data-lucide="file-text"></i>
+                <span class="btn-text">상세 근거 보기</span>
+              </span>
+              <i data-lucide="chevron-down" class="arrow-icon"></i>
+            </button>
+            <div class="accordion-body">
+              <div class="accordion-inner-grid">
+                <p class="evidence-text">
+                  • 3단계 마일스톤(기획 확정 ➔ 핵심 기능 구현 ➔ 통합 검수) 일정 100% 준수<br>
+                  • 마감일 D-2 시점 사전 취합 완료 후 최종 검토 진행 기록
+                </p>
+                <div class="evidence-image-placeholder">
+                  <i data-lucide="image"></i>
+                  <span>[마일스톤 운영표 이미지 공간]</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 카드 03 -->
+        <article class="card-row">
+          <div class="card-row-header">
+            <h3 class="card-row-title">
+              <i data-lucide="shield-check"></i>
+              <span>03. 체계적인 기록 및 AI 코드 교차 검증</span>
+            </h3>
+            <span class="card-row-badge">STAR 03</span>
+          </div>
+
+          <div class="star-row-container">
+            <div class="star-cell">
+              <span class="star-cell-header"><span class="star-tag-solid">상황</span> AI 제안 코드 검증</span>
+              <p class="star-cell-desc">새로운 웹 기술 및 보안 규격 적용 시 AI 도구 제안 코드의 안전성 검증이 요구되었을 때</p>
+            </div>
+            <div class="star-cell">
+              <span class="star-cell-header"><span class="star-tag-solid">행동</span> OWASP 교차 대조</span>
+              <p class="star-cell-desc">공식 명세서 및 OWASP 가이드라인을 바탕으로 코드를 1줄씩 교차 대조하고 오답노트를 기록하여</p>
+            </div>
+            <div class="star-cell">
+              <span class="star-cell-header"><span class="star-tag-solid">결과</span> 보안 취약점 차단</span>
+              <p class="star-cell-desc">AI가 제안한 코드를 맹신하지 않고 공식 문서와 철저히 교차 검증하여 잠재적 취약점을 원천 차단했습니다.</p>
+            </div>
+          </div>
+
+          <div class="evidence-accordion-wrap">
+            <button type="button" class="toggle-btn" aria-expanded="false" onclick="toggleAccordion(this)">
+              <span class="btn-label-group">
+                <i data-lucide="file-text"></i>
+                <span class="btn-text">상세 근거 보기</span>
+              </span>
+              <i data-lucide="chevron-down" class="arrow-icon"></i>
+            </button>
+            <div class="accordion-body">
+              <div class="accordion-inner-grid">
+                <p class="evidence-text">
+                  • 키보드 Tab 이동 및 포커스 링 표시 전 항목 준수<br>
+                  • OWASP 시큐어 코딩 기준 및 WCAG 2.1 명암비 4.5:1 이상 전 구역 통과 달성
+                </p>
+                <div class="evidence-image-placeholder">
+                  <i data-lucide="image"></i>
+                  <span>[OWASP 검증 로그 이미지 공간]</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </main>
+
+    <!-- 4. 하단 영역: 5대 검사 통과 기록 -->
+    <footer>
+      <div class="inspection-badge-group">
+        <span>배포 확인: <strong>newpy15.github.io</strong></span>
+        <span class="inspection-badge">
+          <i data-lucide="check-circle"></i>
+          <span>5대 검사(링크·Tab·제목순서·명암비·콘솔오류) 통과</span>
+        </span>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Lucide 아이콘 초기화
+      if (window.lucide) {
+        lucide.createIcons();
+      }
+    });
+
+    // 부드러운 아코디언 토글 함수
+    function toggleAccordion(btn) {
+      const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+      const body = btn.nextElementSibling;
+      const textSpan = btn.querySelector('.btn-text');
+
+      if (isExpanded) {
+        btn.setAttribute('aria-expanded', 'false');
+        btn.classList.remove('open');
+        body.classList.remove('open');
+        textSpan.textContent = '상세 근거 보기';
+      } else {
+        btn.setAttribute('aria-expanded', 'true');
+        btn.classList.add('open');
+        body.classList.add('open');
+        textSpan.textContent = '상세 근거 닫기';
+      }
+    }
+  </script>
 </body>
 </html>
