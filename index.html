@@ -682,6 +682,36 @@
         align-items: flex-start;
       }
     }
+      /* ===== 추가 반응형 보정 ===== */
+    .top-dashboard-grid > * { min-width: 0; }
+    .hub-ai-tags, .branch-node-tags { flex-wrap: wrap; }
+    .branch-node { flex-wrap: wrap; }
+    .card-row-header { flex-wrap: wrap; gap: 8px; }
+    .accordion-body.open { max-height: 600px; }
+    .inspection-badge-group { flex-wrap: wrap; justify-content: center; }
+    footer { flex-wrap: wrap; }
+
+    @media (max-width: 1280px) and (min-width: 1025px) {
+      .top-dashboard-grid { grid-template-columns: 380px 1fr; }
+      .hub-diagram { flex-direction: column; align-items: stretch; }
+      .hub-ai-core { align-self: flex-start; }
+    }
+
+    @media (max-width: 1024px) {
+      .hub-ai-core { width: 100%; }
+      .hub-branches-wrap { width: 100%; }
+    }
+
+    @media (max-width: 640px) {
+      body { padding: 16px; }
+      .header-title-row h1 { font-size: 1.5rem; }
+      .tagline { font-size: 0.9rem; }
+      .branch-row { flex-direction: column; align-items: stretch; gap: 4px; }
+      .branch-arrow { transform: rotate(90deg); align-self: flex-start; }
+      .card-row { padding: 12px 14px; }
+      .favorites-group { flex-wrap: wrap; }
+    }
+
   </style>
 </head>
 <body>
