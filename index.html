@@ -712,6 +712,14 @@
       .favorites-group { flex-wrap: wrap; }
     }
 
+      /* ===== 보정 2: 좌측 카드 높이 맞춤, 중간 폭 허브 가로 유지 ===== */
+    .privacy-column .info-card { flex: 1; }
+    .hub-diagram { flex-wrap: wrap; }
+    .hub-branches-wrap { min-width: 260px; }
+    @media (max-width: 1280px) and (min-width: 1025px) {
+      .hub-diagram { flex-direction: row; align-items: center; }
+      .hub-ai-core { align-self: auto; width: auto; }
+    }
   </style>
 </head>
 <body>
