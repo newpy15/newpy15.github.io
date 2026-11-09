@@ -730,7 +730,19 @@
     .pj-links a { font-size: 0.8rem; font-weight: 700; color: var(--navy-700); border: 1px solid var(--navy-700); border-radius: var(--radius-pill); padding: 3px 12px; text-decoration: none; background: #fff; }
     .pj-links a:hover { background: var(--navy-700); color: #fff; }
     #projects-anchor { display: none; }
-</style>
+    .pj-lead { font-size: 0.9rem; color: var(--text-muted); }
+    .pj-private { font-size: 0.78rem; font-weight: 700; color: var(--text-dim); border: 1px dashed var(--border-color); border-radius: var(--radius-pill); padding: 3px 12px; }
+    .pj-sub-title { font-size: 0.98rem; font-weight: 800; color: var(--navy-900); display: flex; align-items: center; gap: 8px; margin-top: 4px; }
+    .pj-mini-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .pj-mini { background: var(--bg-sub); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 12px 14px; display: flex; flex-direction: column; gap: 6px; align-items: flex-start; font-size: 0.85rem; }
+    .pj-mini strong { color: var(--navy-700); }
+    .pj-mini p { color: var(--text-muted); flex: 1; }
+    .pj-mini a { font-size: 0.78rem; font-weight: 700; color: var(--navy-700); text-decoration: none; border: 1px solid var(--navy-700); border-radius: var(--radius-pill); padding: 2px 10px; background: #fff; margin-right: 4px; }
+    .pj-mini a:hover { background: var(--navy-700); color: #fff; }
+    .star-cell-desc strong { color: var(--navy-700); }
+    @media (max-width: 1024px) { .pj-mini-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 640px) { .pj-mini-grid { grid-template-columns: 1fr; } }
+  </style>
 </head>
 <body>
 
@@ -860,106 +872,62 @@
 
     </section>
 
-        <!-- 프로젝트: 문제 → 개선 → 결과 -->
-    <section class="projects" aria-label="프로젝트로 보는 문제 해결">
+            <!-- 프로젝트: 문제 → 개선 → 결과 -->
+    <section class="projects" aria-label="대표 프로젝트">
       <h2 class="section-title">
         <i data-lucide="rocket"></i>
-        <span>프로젝트로 보는 문제 해결: 무엇이 문제였고, 어떻게 고쳤나</span>
+        <span>대표 프로젝트: 문제를 만나고, 측정하고, 고친 과정</span>
       </h2>
-      <p class="pj-intro">GitHub 저장소에 남긴 오류, 개선, 검증 기록을 바탕으로 정리했습니다. AI(Claude)와 함께 만들었고, 무엇을 맡기고 무엇을 직접 판단했는지도 적었습니다.</p>
+      <p class="pj-intro">GitHub 저장소의 개발 일지와 Notion 기획서를 바탕으로 정리했습니다. AI(Claude)와 함께 만들었고, 무엇을 맡기고 무엇을 직접 판단했는지도 적었습니다.</p>
       <div class="cards-vertical-stack">
+
         <article class="card-row">
           <div class="card-row-header">
-            <h3 class="card-row-title"><i data-lucide="shield-check"></i><span>플랜두씨 다이어리 2 · 로그인과 내 자료 보호</span></h3>
-            <span class="card-row-badge">과제 7</span>
+            <h3 class="card-row-title"><i data-lucide="swords"></i><span>증강 오목 (Augmented Omok) · 2~4인 파티게임</span></h3>
+            <span class="card-row-badge">진행 중 · Unity C#</span>
           </div>
+          <p class="pj-lead">오목을 두다가 10/20/30번째 턴마다 증강(특수 능력) 22종 중 하나를 골라 쓰는 게임입니다. 기획서(Notion v0.3, v0.3.1)를 쓰고, 친구 의견을 반영해 고치고, 구현 현황 보고서로 기획 대비 진행도를 항목별로 점검하며 개발하고 있습니다.</p>
           <div class="star-row-container">
-            <div class="star-cell"><span class="star-cell-header"><span class="star-tag-solid">문제</span></span><p class="star-cell-desc">6번 앱은 링크를 아는 사람이면 누구나 내 계획을 보고 고칠 수 있었습니다.</p></div>
-            <div class="star-cell"><span class="star-cell-header"><span class="star-tag-solid">개선</span></span><p class="star-cell-desc">Supabase Auth로 가입·로그인을 붙이고, 표 직접 접근 권한을 모두 회수한 뒤 DB 함수 안에서 auth.uid()로 주인을 확인하게 바꿨습니다. 로그아웃하면 서버가 세션을 지워 이전 토큰이 바로 거절되게 했습니다. 5일 기록에서 순서를 두 번 틀린 뒤에는 서버가 순서를 강제하는 규칙을 추가했습니다.</p></div>
-            <div class="star-cell"><span class="star-cell-header"><span class="star-tag-solid">결과</span></span><p class="star-cell-desc">직접 만든 확인 스크립트 29개 항목 통과(0 실패). 다른 계정의 자료 읽기·수정·삭제는 모두 404, 로그인 없이 요청하면 401, 로그아웃 뒤 같은 토큰은 401로 거절됐습니다.</p></div>
+            <div class="star-cell"><span class="star-cell-header"><span class="star-tag-solid">1 자리 불균형</span></span><p class="star-cell-desc"><strong>문제</strong> 청소부가 항상 마지막 순서 플레이어 바로 뒤에 움직여, 4인전에서 첫 자리 승률 70%, 마지막 자리 3%까지 벌어졌습니다.<br><strong>개선</strong> 청소부마다 움직이는 박자를 무작위로 하고 출근 시각도 흔들었습니다.<br><strong>결과</strong> 4인 1000판 측정에서 자리별 승률이 22.9 / 22.7 / 27.9 / 26.2%로 25% 근처에 모였습니다.</p></div>
+            <div class="star-cell"><span class="star-cell-header"><span class="star-tag-solid">2 증강 밸런스</span></span><p class="star-cell-desc"><strong>문제</strong> 쌍수, 저격수, 도박꾼의 주사위가 단독 순승률 +17~22%로 너무 셌습니다.<br><strong>개선</strong> 봇 시뮬레이션 수치를 근거로 사용 횟수를 줄이고(쌍수 2→1회 등) 나눠서 조정했습니다.<br><strong>결과</strong> 증강 단독 순승률 범위가 약 -19% ~ +12%로 좁아졌습니다. 4인 전원 증강 1000판에서는 쌍수 35.3%, 지진 15.8%로 아직 편차가 있어 조정안을 정리해 두었습니다.</p></div>
+            <div class="star-cell"><span class="star-cell-header"><span class="star-tag-solid">3 측정 도구의 오류</span></span><p class="star-cell-desc"><strong>문제</strong> 시뮬레이션의 "청소부 ON"이 자동 출근까지 켜서 실제 기본값(꺼짐)과 달랐고, 그래서 청소부 관련 증강 5개의 수치를 믿을 수 없었습니다.<br><strong>개선</strong> 결과를 그대로 쓰지 않고 원인을 찾아 일지에 적고, 기준 수치를 다시 잡는 일을 첫 할 일로 올렸습니다.<br><strong>결과</strong> 수치를 한 번에 다 바꾸지 않고 "측정 → 하나씩 적용 → 재측정" 순서로 진행합니다. 규칙 자동 테스트 84개는 모두 통과합니다.</p></div>
           </div>
-          <p class="pj-note"><strong>AI와 내 판단:</strong> AI는 새 Supabase 프로젝트를 만들자고 했지만, 같은 프로젝트 안의 별도 칸(diary2)을 쓰기로 제가 바꿨습니다.</p>
+          <p class="pj-note"><strong>AI와 내 판단:</strong> 승률을 "+13%" 같은 순승률이 아니라 실제 승률(%)로, 4명 모두 증강을 가진 실제 조건과 자리별 구성까지 보여 달라고 요구해서 측정 방식을 바꿨습니다. 증강 효과는 시스템이 아니라 플레이어가 직접 선택해 쓰는 것으로 기획을 확정했습니다.</p>
+          <p class="pj-note"><strong>다음 단계:</strong> 청소부 기본값으로 4인 1000판 재측정, 조정안을 나눠 적용 후 재측정, 친구 플레이 피드백 수집.</p>
+          <div class="pj-foot">
+            <span class="pj-tags"><span class="branch-tag">Unity</span><span class="branch-tag">C#</span><span class="branch-tag">밸런스 시뮬레이션</span><span class="branch-tag">자동 테스트 84개</span><span class="branch-tag">기획서 v0.3.1</span></span>
+            <span class="pj-links"><span class="pj-private">저장소와 기획서는 비공개 (요청 시 공개 가능)</span></span>
+          </div>
+        </article>
+
+        <article class="card-row">
+          <div class="card-row-header">
+            <h3 class="card-row-title"><i data-lucide="calendar-check"></i><span>플랜두씨 다이어리 · 계획과 실제를 나란히</span></h3>
+            <span class="card-row-badge">과제 6 → 7 · Supabase</span>
+          </div>
+          <p class="pj-lead">내가 세운 계획과 실제로 한 일을 나란히 적고, 차이를 돌아보며 다음 계획을 고치는 웹 다이어리입니다. 6번에서 만들고 7번에서 로그인을 붙였습니다.</p>
+          <div class="star-row-container">
+            <div class="star-cell"><span class="star-cell-header"><span class="star-tag-solid">1 보이지 않던 습관</span></span><p class="star-cell-desc"><strong>문제</strong> 할 일을 체크하는 앱은 많지만, 내가 계획을 어느 쪽으로 자주 틀리는지는 보이지 않았습니다.<br><strong>개선</strong> 계획과 실제 기록을 나란히 두고 차이(실제 − 예상)를 돌아보기에서 보여주게 했습니다. 수정 이력이 남고, 같은 기록을 두 번 저장해도 1건만 남습니다.<br><strong>결과</strong> 계획 → 실제 → 돌아보기 → 다음 계획으로 이어지는 흐름을 완성했고, 자료는 JSON 파일로 내려받을 수 있습니다.</p></div>
+            <div class="star-cell"><span class="star-cell-header"><span class="star-tag-solid">2 누구나 볼 수 있던 자료</span></span><p class="star-cell-desc"><strong>문제</strong> 6번은 링크를 아는 사람이면 누구나 내 계획을 보고 고칠 수 있었습니다.<br><strong>개선</strong> Supabase Auth로 가입·로그인을 붙이고, 표 직접 접근 권한을 모두 회수해 DB 함수 안에서 auth.uid()로 주인을 확인하게 했습니다. 로그아웃하면 서버가 세션을 지워 이전 토큰을 거절합니다.<br><strong>결과</strong> 직접 만든 확인 스크립트 29개 항목 통과. 남의 자료 읽기·수정·삭제는 404, 로그인 없이 요청은 401, 로그아웃 뒤 같은 토큰은 401로 거절됩니다.</p></div>
+            <div class="star-cell"><span class="star-cell-header"><span class="star-tag-solid">3 쓰면서 발견한 실수</span></span><p class="star-cell-desc"><strong>문제</strong> 5일 기록을 직접 쓰다가 기록 순서(규칙 변경 전에 3일차 기록)를 두 번 틀렸습니다.<br><strong>개선</strong> 사람이 조심하는 대신 서버가 순서를 강제하게 했습니다. 규칙을 바꾸기 전에는 새 날짜 기록을 거절하고 안내 문구를 보여줍니다.<br><strong>결과</strong> 같은 실수를 앱이 막아 주고, 변경 전후를 같은 지표·단위로 비교한 표가 자동으로 나옵니다.</p></div>
+          </div>
+          <p class="pj-note"><strong>AI와 내 판단:</strong> AI는 새 Supabase 프로젝트와 별도 서버(Python, Cloudflare)를 제안했지만, 기존 프로젝트 안의 별도 칸과 GitHub 링크로 열리는 정적 방식을 제가 선택했습니다. 5일 기록 주제도 AI 후보 대신 제가 공부 중인 네트워크로 정했습니다.</p>
           <div class="pj-foot">
             <span class="pj-tags"><span class="branch-tag">Supabase Auth</span><span class="branch-tag">PostgreSQL</span><span class="branch-tag">보안 검증</span><span class="branch-tag">GitHub Pages</span></span>
-            <span class="pj-links"><a href="https://github.com/newpy15/plan-do-see-diary-2" target="_blank" rel="noopener">소스</a><a href="https://github.com/newpy15/plan-do-see-diary-2/blob/main/AUTH.md" target="_blank" rel="noopener">인증 설명서</a><a href="https://github.com/newpy15/plan-do-see-diary-2/blob/main/docs/auth-check-result.md" target="_blank" rel="noopener">확인 기록</a><a href="https://newpy15.github.io/plan-do-see-diary-2/" target="_blank" rel="noopener">실행</a></span>
+            <span class="pj-links"><a href="https://github.com/newpy15/plan-do-see-diary-2" target="_blank" rel="noopener">소스 (7번)</a><a href="https://github.com/newpy15/plan-do-see-diary-2/blob/main/AUTH.md" target="_blank" rel="noopener">인증 설명서</a><a href="https://github.com/newpy15/plan-do-see-diary-2/blob/main/docs/auth-check-result.md" target="_blank" rel="noopener">확인 기록</a><a href="https://newpy15.github.io/plan-do-see-diary-2/" target="_blank" rel="noopener">실행</a><a href="https://newpy15.github.io/plan-do-see-diary/" target="_blank" rel="noopener">6번</a></span>
           </div>
         </article>
-        <article class="card-row">
-          <div class="card-row-header">
-            <h3 class="card-row-title"><i data-lucide="git-compare"></i><span>플랜두씨 다이어리 · 계획과 실제의 차이 보기</span></h3>
-            <span class="card-row-badge">과제 6</span>
-          </div>
-          <div class="star-row-container">
-            <div class="star-cell"><span class="star-cell-header"><span class="star-tag-solid">문제</span></span><p class="star-cell-desc">할 일을 체크하는 앱은 많지만, 내가 계획을 어느 쪽으로 자주 틀리는지는 보이지 않았습니다.</p></div>
-            <div class="star-cell"><span class="star-cell-header"><span class="star-tag-solid">개선</span></span><p class="star-cell-desc">계획과 실제 기록을 나란히 두고 차이(실제 − 예상)를 돌아보기에서 보여주게 했습니다. 계획을 고쳐도 수정 이력이 남고, 같은 기록을 두 번 저장해도 1건만 남도록 했습니다. 돌아보기 결과는 다음 계획에 넘길 한 줄로 적습니다.</p></div>
-            <div class="star-cell"><span class="star-cell-header"><span class="star-tag-solid">결과</span></span><p class="star-cell-desc">계획 → 실제 → 돌아보기 → 다음 계획으로 이어지는 흐름이 Supabase에 저장되어 기기를 바꿔도 유지되고, 내 자료를 JSON 파일로 내려받을 수 있습니다.</p></div>
-          </div>
-          <p class="pj-note"><strong>AI와 내 판단:</strong> AI가 제안한 별도 서버 방식(Python 서버, Cloudflare)은 GitHub 링크로 열리는 방식과 맞지 않아 따르지 않았습니다.</p>
-          <div class="pj-foot">
-            <span class="pj-tags"><span class="branch-tag">Supabase</span><span class="branch-tag">PL/pgSQL</span><span class="branch-tag">JavaScript</span></span>
-            <span class="pj-links"><a href="https://github.com/newpy15/plan-do-see-diary" target="_blank" rel="noopener">소스</a><a href="https://newpy15.github.io/plan-do-see-diary/" target="_blank" rel="noopener">실행</a></span>
-          </div>
-        </article>
-        <article class="card-row">
-          <div class="card-row-header">
-            <h3 class="card-row-title"><i data-lucide="scale"></i><span>환율 대시보드 · 화면 숫자는 믿을 수 있나</span></h3>
-            <span class="card-row-badge">검증</span>
-          </div>
-          <div class="star-row-container">
-            <div class="star-cell"><span class="star-cell-header"><span class="star-tag-solid">문제</span></span><p class="star-cell-desc">화면에 보이는 숫자가 원본과 같은지는 저장, 포맷, 시각대 변환을 거치며 어디서든 틀어질 수 있습니다.</p></div>
-            <div class="star-cell"><span class="star-cell-header"><span class="star-tag-solid">개선</span></span><p class="star-cell-desc">원자료, 저장값, 화면값을 3계층으로 나눠 숫자 정규화 후 의미값을 비교하게 만들었습니다. 하루가 실패(stale)해도 직전 정상값을 유지하는 시나리오와, 불일치 1건을 일부러 넣어 배지가 뜨는지 보는 데모도 넣었습니다.</p></div>
-            <div class="star-cell"><span class="star-cell-header"><span class="star-tag-solid">결과</span></span><p class="star-cell-desc">7일 14건 전건 일치를 한 화면에서 확인할 수 있고, 일부러 만든 불일치도 감지됩니다.</p></div>
-          </div>
-          <div class="pj-foot">
-            <span class="pj-tags"><span class="branch-tag">데이터 검증</span><span class="branch-tag">JavaScript</span><span class="branch-tag">단일 HTML</span></span>
-            <span class="pj-links"><a href="https://github.com/newpy15/real-info-board" target="_blank" rel="noopener">소스</a></span>
-          </div>
-        </article>
-        <article class="card-row">
-          <div class="card-row-header">
-            <h3 class="card-row-title"><i data-lucide="repeat"></i><span>AI 두 개 인수인계 실험 (Blind Test)</span></h3>
-            <span class="card-row-badge">T05</span>
-          </div>
-          <div class="star-row-container">
-            <div class="star-cell"><span class="star-cell-header"><span class="star-tag-solid">문제</span></span><p class="star-cell-desc">대화 기록 없이 저장소와 인수인계 문서만으로 다른 AI가 작업을 이어받을 수 있는지 알고 싶었습니다.</p></div>
-            <div class="star-cell"><span class="star-cell-header"><span class="star-tag-solid">개선</span></span><p class="star-cell-desc">검사 10개와 사용 상한(30분, 50회)을 작업 전에 고정하고, 목표·현재 상태·실행 명령·남은 문제·건드리지 말 것을 담은 HANDOFF.md를 남겼습니다. 모델 이름을 가리고 시간, 호출 수, 오류, 통과 수로만 비교했습니다.</p></div>
-            <div class="star-cell"><span class="star-cell-header"><span class="star-tag-solid">결과</span></span><p class="star-cell-desc">두 AI 모두 고정 검사 10/10 통과. 작업 시간은 12분과 5분, 호출 수는 15회와 24회였습니다.</p></div>
-          </div>
-          <div class="pj-foot">
-            <span class="pj-tags"><span class="branch-tag">인수인계 문서</span><span class="branch-tag">AI 협업</span><span class="branch-tag">검증 기준 고정</span></span>
-            <span class="pj-links"><a href="https://github.com/newpy15/exchange-rate-blind-test" target="_blank" rel="noopener">소스</a><a href="https://github.com/newpy15/exchange-rate-blind-test/blob/main/T05_COMPARISON.md" target="_blank" rel="noopener">비교표</a></span>
-          </div>
-        </article>
-        <article class="card-row">
-          <div class="card-row-header">
-            <h3 class="card-row-title"><i data-lucide="image"></i><span>짤/카드 스튜디오 · 올린 사진이 정보를 새지 않게</span></h3>
-            <span class="card-row-badge">도구</span>
-          </div>
-          <div class="star-row-container">
-            <div class="star-cell"><span class="star-cell-header"><span class="star-tag-solid">문제</span></span><p class="star-cell-desc">사진을 편집해 내보내면 원본의 위치(GPS)와 기기 정보가 같이 나갈 수 있고, 화면비를 바꾸면 문구 위치가 틀어졌습니다.</p></div>
-            <div class="star-cell"><span class="star-cell-header"><span class="star-tag-solid">개선</span></span><p class="star-cell-desc">원본을 새 캔버스에 다시 그려서 내보내 메타데이터가 남지 않게 했고, 문구 위치를 상대 좌표로 저장해 1:1, 4:5, 9:16 전환에도 배치가 유지되게 했습니다. 손상된 파일은 크래시 없이 안내하고, 저장한 편집 상태는 정상, 손상, 필수 누락 3가지로 검증한 뒤 복원합니다.</p></div>
-            <div class="star-cell"><span class="star-cell-header"><span class="star-tag-solid">결과</span></span><p class="star-cell-desc">미리보기와 다운로드가 같은 렌더 로직을 쓰고, 설치 없이 HTML 한 파일로 동작합니다.</p></div>
-          </div>
-          <div class="pj-foot">
-            <span class="pj-tags"><span class="branch-tag">Canvas</span><span class="branch-tag">EXIF 제거</span><span class="branch-tag">반응형</span></span>
-            <span class="pj-links"><a href="https://github.com/newpy15/zzal-studio" target="_blank" rel="noopener">소스</a></span>
-          </div>
-        </article>
-        <article class="card-row">
-          <div class="card-row-header">
-            <h3 class="card-row-title"><i data-lucide="gamepad-2"></i><span>게임 · 만들어 보며 배우기</span></h3>
-            <span class="card-row-badge">실험</span>
-          </div>
-          <div class="star-row-container">
-            <div class="star-cell"><span class="star-cell-header"><span class="star-tag-solid">문제</span></span><p class="star-cell-desc">배우는 걸 게임으로 만들고, 설치가 필요한 게임은 웹에서 바로 되게 하고 싶었습니다.</p></div>
-            <div class="star-cell"><span class="star-cell-header"><span class="star-tag-solid">개선</span></span><p class="star-cell-desc">Python Typing Game(easy-py)은 떨어지는 코드를 받아치며 함수를 익히고, 놓친 코드를 복습하게 했습니다. Gun Game은 Roblox 스크립트로 만든 총게임을 three.js 웹 버전으로 옮겨, 시야 확인과 반응 지연을 넣은 봇과 대전하게 했습니다.</p></div>
-            <div class="star-cell"><span class="star-cell-header"><span class="star-tag-solid">결과</span></span><p class="star-cell-desc">둘 다 링크 하나로 바로 플레이할 수 있습니다. 집안일 기록장(housework-tracker)처럼 내가 겪은 불편에서 시작한 도구도 있습니다.</p></div>
-          </div>
-          <div class="pj-foot">
-            <span class="pj-tags"><span class="branch-tag">three.js</span><span class="branch-tag">Lua</span><span class="branch-tag">JavaScript</span></span>
-            <span class="pj-links"><a href="https://newpy15.github.io/easy-py/" target="_blank" rel="noopener">Python Typing Game</a><a href="https://newpy15.github.io/gun-game/" target="_blank" rel="noopener">Gun Game</a><a href="https://github.com/newpy15/housework-tracker" target="_blank" rel="noopener">집안일 기록장</a></span>
-          </div>
-        </article>
+
+      </div>
+
+      <h3 class="pj-sub-title"><i data-lucide="flask-conical"></i><span>그 밖의 시도</span></h3>
+      <div class="pj-mini-grid">
+        <div class="pj-mini"><strong>환율 대시보드</strong><p>원자료, 저장값, 화면값을 비교해 7일 14건이 전부 일치하는지 검증합니다.</p><a href="https://github.com/newpy15/real-info-board" target="_blank" rel="noopener">소스</a></div>
+        <div class="pj-mini"><strong>AI 인수인계 실험</strong><p>대화 기록 없이 문서만으로 다른 AI가 이어받아, 고정 검사 10개를 둘 다 통과했습니다.</p><a href="https://github.com/newpy15/exchange-rate-blind-test/blob/main/T05_COMPARISON.md" target="_blank" rel="noopener">비교표</a></div>
+        <div class="pj-mini"><strong>짤/카드 스튜디오</strong><p>사진을 새 캔버스에 다시 그려서 내보내 위치(GPS) 정보가 남지 않게 했습니다.</p><a href="https://github.com/newpy15/zzal-studio" target="_blank" rel="noopener">소스</a></div>
+        <div class="pj-mini"><strong>오목 매치 (웹 프로토타입)</strong><p>서버가 지뢰 위치 같은 비공개 정보를 관리하고, 10초 안에 상대가 없으면 AI와 대결합니다.</p><span class="pj-private">비공개 저장소</span></div>
+        <div class="pj-mini"><strong>Gun Game, Python Typing Game</strong><p>총게임을 웹으로 옮겼고, 파이썬 코드를 받아치며 익히는 타이핑 게임을 만들었습니다.</p><a href="https://newpy15.github.io/gun-game/" target="_blank" rel="noopener">Gun Game</a><a href="https://newpy15.github.io/easy-py/" target="_blank" rel="noopener">Typing</a></div>
+        <div class="pj-mini"><strong>집안일 기록장</strong><p>누가 언제 무엇을 했는지 기억나지 않는 불편에서 시작한 달력형 체크 앱입니다.</p><a href="https://github.com/newpy15/housework-tracker" target="_blank" rel="noopener">소스</a></div>
       </div>
     </section>
 
